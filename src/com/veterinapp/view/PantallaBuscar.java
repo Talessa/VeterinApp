@@ -36,4 +36,5 @@ public class PantallaBuscar {
 
         }while (!salir);
     }
+
 }
