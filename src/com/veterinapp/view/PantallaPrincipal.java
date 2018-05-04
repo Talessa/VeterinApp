@@ -1,5 +1,6 @@
 package com.veterinapp.view;
 
+import com.veterinapp.view.widget.Dog;
 import com.veterinapp.view.widget.Title;
 
 import java.util.Scanner;
@@ -14,6 +15,7 @@ public class PantallaPrincipal {
         do {
 
             //doy la bienvenida al usuario y le muestro el menu
+            new Dog().iniciar();
             title.show("Bienvenido a veterinApp");
             System.out.println("Seleccione que desea hacer");
             System.out.println();
