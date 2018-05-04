@@ -1,0 +1,68 @@
+package com.veterinapp.manager;
+
+import com.veterinapp.Database;
+import com.veterinapp.model.Veterinario;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ManagerVeterianarios {
+
+       public static void crearVeterinario(String nombre, String direccion,
+                                    int telefono, String horario, String web,
+                                    String especializacion, double visita_N, double visita_U,
+                                    double vacuna, double chipado,boolean urgencias24){
+
+
+      Veterinario veterinario = new Veterinario(nombre,direccion,telefono,horario,web,especializacion,
+                                                visita_N,visita_U,vacuna,chipado,urgencias24,0,false,0);
+
+      Database.get().insertVeterinario(veterinario);
+
+        return;
+    }
+
+    public static List<Veterinario> buscarNombreVeterianrio(String nombre){
+        List<Veterinario> todos_veterinarios = Database.get().selectAllVeterinarios();
+        List<Veterinario> veterinarios = new ArrayList<>();
+
+        for (Veterinario veterinario: todos_veterinarios) {
+            if (veterinario.mostrar == true) {
+                if (veterinario.nombre.toLowerCase().contains(nombre.toLowerCase())) {
+                    veterinarios.add(veterinario);
+                }
+            }
+        }
+        return veterinarios;
+    }
+    public static List<Veterinario> buscarespecializacionVeterinario(String especializacion){
+        List<Veterinario> todos_veterinarios = Database.get().selectAllVeterinarios();
+        List<Veterinario> veterinarios = new ArrayList<>();
+
+        for (Veterinario veterinario: todos_veterinarios) {
+            if (veterinario.mostrar == true) {
+                if (veterinario.especializacion.toLowerCase().contains(especializacion.toLowerCase())) {
+                    veterinarios.add(veterinario);
+                }
+            }
+        }
+        return veterinarios;
+    }
+
+    public static List<Veterinario> buscarpuntuacionveterianrio(int puntuacion){
+        List<Veterinario> todos_veterinarios = Database.get().selectAllVeterinarios();
+        List<Veterinario> veterinarios = new ArrayList<>();
+
+        for (Veterinario veterinario: todos_veterinarios) {
+            if (veterinario.mostrar == true) {
+                if (veterinario.puntuacion >= puntuacion) {
+                    veterinarios.add(veterinario);
+                }
+            }
+
+        }
+        return veterinarios;
+    }
+
+}
+
