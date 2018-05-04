@@ -13,51 +13,350 @@ public class PantallaRegistrarVeterinario {
         Scanner scanner = new Scanner(System.in);
         List<Double> precios = new ArrayList<>();
 
+
+        //Aqui Declaramos variables//
+
+        String nombre="";
+        String direccion="";
+        int telefono=0;
+        String horario="";
+        String web="";
+        String especializacion="";
+        Boolean urgencias24 = false;
+        String urg="";
+        double visita_N=0;
+        double visita_U=0;
+        double vacuna=0;
+        double chipado=0;
+
+
+
+        boolean esValido = false;
+
         System.out.println("Registro de Veterinarios");
         System.out.println();
 
-        System.out.println("Nombre del veterinario:");
-        String nombre = scanner.nextLine();
+        while (!esValido) {
 
+        System.out.println("Nombre del veterinario:");
+         nombre = scanner.nextLine();
+
+
+        // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
+
+        if (nombre.length() > 101) {
+            System.out.println("Maximo de 100");
+            esValido = false;
+        } else {
+            esValido = true;
+        }
+
+        // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+
+        if (nombre.isEmpty()) {
+            System.out.println("Valor no valido,Introduzca de nuevo el Nombre");
+            esValido = false;
+        } else {
+            esValido = true;
+
+        }
+
+    }
+
+    esValido = false;
+
+    while (!esValido) {
         System.out.println("Introduzca la direccion:");
-        String direccion = scanner.nextLine();
+        direccion = scanner.nextLine();
+
+        // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
+
+        if (direccion.length() > 201) {
+            System.out.println("Maximo de 200");
+            esValido = false;
+        } else {
+            esValido = true;
+        }
+
+
+
+        // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+        if (direccion.isEmpty()) {
+            System.out.println("Valor no valido,Introduzca de nuevo la dirección");
+                esValido = false;
+        } else {
+                esValido = true;
+
+            }
+
+        }
+
+        esValido = false;
+
+
+            while (!esValido) {
+
 
         System.out.println("Introduzca el numero de telefono:");
-        int telefono = scanner.nextInt();
+         telefono = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Introduzca el horario:");
-        String horario = scanner.nextLine();
+                while (!esValido) {
+
+
+
+
+                    if (telefono !=int){
+                        System.out.println("Introduce un valor correcto");
+                        esValido = false;
+                    }
+        else if (telefono ==){
+                        if (telefono > 13) {
+                            System.out.println("Maximo de 12");
+                            esValido = false;
+                        } else {
+                        }
+                    }
+                }
+
+
+
+
+                // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+                if (telefono.Empty()) {
+                    System.out.println("Valor no valido,Introduzca de nuevo el telefono");
+                    esValido = false;
+                } else {
+                    esValido = true;
+
+                }
+
+                while (!esValido) {
+
+         System.out.println("Introduzca el horario:");
+         horario = scanner.nextLine();
+
+                    while (!esValido) {
+                        if (horario.length() > 101) {
+                            System.out.println("Maximo de 101");
+                            esValido = false;
+                        } else {
+                            esValido = true;
+                        }
+
+
+                    }
+
+                    if (horario.isEmpty()) {
+                        System.out.println("Valor no valido,Introduzca de nuevo el horario");
+                        esValido = false;
+                    } else {
+                        esValido = true;
+
+                    }
+                }
+
+                esValido = false;
+
+                    while (!esValido) {
 
         System.out.println("Introduzca su web:");
-        String web = scanner.nextLine();
+         web = scanner.nextLine();
+
+                        if (web.length() > 201) {
+                            System.out.println("Maximo de 200");
+                            esValido = false;
+                        } else {
+                            esValido = true;
+                        }
+
+                        // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+                        if (web.isEmpty()) {
+                            System.out.println("Valor no valido,Introduzca de nuevo la web");
+                            esValido = false;
+                        } else {
+                            esValido = true;
+
+                        }
+                    }
+
+                    esValido = false;
+
+                        while (!esValido) {
 
         System.out.println("Introduzca su especializacion:");
-        String especializacion = scanner.nextLine();
+         especializacion = scanner.nextLine();
 
-        System.out.println("Introduzca el precios de visita estandar:");
-        double visita_N=scanner.nextDouble();
+                            while (!esValido) {
+
+
+                                // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
+
+                                if (especializacion.length() > 21) {
+                                    System.out.println("Maximo de 20");
+                                    esValido = false;
+                                } else {
+                                    esValido = true;
+                                }
+
+
+                                // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+                                if (especializacion.isEmpty()) {
+                                    System.out.println("Valor no valido,Introduzca de nuevo la especialización");
+                                    esValido = false;
+                                } else {
+                                    esValido = true;
+
+                                }
+
+                            }
+
+                            esValido = false;
+
+
+                            System.out.println("Introduzca el precios de visita estandar:");
+         visita_N=scanner.nextDouble();
         scanner.nextLine();
+
+                                while (!esValido) {
+
+
+                                    if (visita_N !=double){
+                                        System.out.println("Introduce un valor correcto");
+                                        esValido = false;
+                                    }
+        else if (visita_N ==double)
+
+
+                                    // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+                                    if (visita_N.Empty()) {
+                                        System.out.println("Valor no valido,Introduzca de nuevo el telefono");
+                                        esValido = false;
+                                    } else {
+                                        esValido = true;
+
+                                    }
+                                }
+                                    esValido=false;
 
         System.out.println("Introduzca el precio de la visita de urgencias:");
-        double visita_U=scanner.nextDouble();
+         visita_U=scanner.nextDouble();
         scanner.nextLine();
+
+                                    while (!esValido) {
+
+
+                                        if (visita_U !=double){
+                                            System.out.println("Introduce un valor correcto");
+                                            esValido = false;
+                                        }else if (visita_U ==double)
+
+                                    }
+
+                                        if (visita_U.Empty()) {
+                                            System.out.println("Valor no valido,Introduzca de nuevo el telefono");
+                                            esValido = false;
+                                        } else {
+                                            esValido = true;
+
+                                        }
+                                    }
+
+                                  esValido=false;
+
 
         System.out.println("Introduzca precio vacunacion:");
-        double vacuna=scanner.nextDouble();
+         vacuna=scanner.nextDouble();
         scanner.nextLine();
 
+
+                                        while (!esValido) {
+
+
+                                            if (vacuna !=double){
+                                                System.out.println("Introduce un valor correcto");
+                                                esValido = false;
+                                            }else if (vacuna ==double)
+
+                                        }
+
+        if (vacuna.Empty()) {
+            System.out.println("Valor no valido,Introduzca de nuevo el telefono");
+            esValido = false;
+        } else {
+            esValido = true;
+
+        }
+
+
+    esValido=false;
+
+
+
+
         System.out.println("Introduzca el precio de implantacion microchip:");
-        double chipado=scanner.nextDouble();
+         chipado=scanner.nextDouble();
         scanner.nextLine();
+
+                                            while (!esValido) {
+
+
+                                                if (chipado !=double){
+                                                    System.out.println("Introduce un valor correcto");
+                                                    esValido = false;
+                                                }else if (chipado ==double)
+
+                                            }
+
+        if (chipado.Empty()) {
+            System.out.println("Valor no valido,Introduzca de nuevo el telefono");
+            esValido = false;
+        } else {
+            esValido = true;
+
+        }
+
+
+        esValido=false;
 
 
         System.out.println("Tiene servicio de urgencias 24 horas:(conteste si/no)");
-        String urg = scanner.nextLine();
+         urg = scanner.nextLine();
 
-        // como urgencias se trata como un volean creo la variable la inicio en
+
+                                                if (urg.length() > 3) {
+                                                    System.out.println("Maximo de 2");
+                                                    esValido = false;
+                                                } else {
+                                                    esValido = true;
+                                                }
+
+
+
+                                                // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+                                                if (urg.isEmpty() || urg != "si" || urg != "no") {
+                                                    System.out.println("Valor no valido,Introduzca de nuevo el Servicio de peluqueria");
+                                                    esValido = false;
+                                                } else {
+                                                    esValido = true;
+
+                                                }
+
+                                            }
+
+                                            esValido = false;
+
+
+
+
+                                            // como urgencias se trata como un volean creo la variable la inicio en
         // false si el usuario a contestado si la cambio a true
-        boolean urgencias24 = false;
+         urgencias24 = false;
 
         if (urg.equals("si")){
             urgencias24 = true;
