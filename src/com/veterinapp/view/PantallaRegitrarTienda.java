@@ -12,11 +12,18 @@ public class PantallaRegitrarTienda {
 
     public void iniciar (){
 
+        String web="";
+        String especializacion="";
+        String pelu ="";
+
         Scanner scanner = new Scanner(System.in);
         Title title = new Title();
         Message message = new Message();
         EditText editText = new EditText();
         Menu menu = new Menu();
+
+        boolean esValido = false;
+
 
         title.show("Registro de tiendas");
 
@@ -26,15 +33,97 @@ public class PantallaRegitrarTienda {
         int telefono = editText.readInt("Introduzca el numero de telefono:");
         String horario = editText.read("Introduzca el horario:");
 
+
+        while (!esValido) {
+
         System.out.println("Introduzca su web:");
-        String web = scanner.nextLine();
+         web = scanner.nextLine();
+
+
+            if (web.length() > 201) {
+                System.out.println("Maximo de 200");
+                esValido = false;
+            } else {
+                esValido = true;
+            }
+
+
+            // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+            if (web.isEmpty()) {
+                System.out.println("Valor no valido,Introduzca de nuevo la web");
+                esValido = false;
+            } else {
+                esValido = true;
+
+            }
+        }
+
+        esValido = false;
+
+
+            while (!esValido) {
 
         System.out.println("Introduzca su especializacion:");
-        String especializacion = scanner.nextLine();
+         especializacion = scanner.nextLine();
+
+
+                // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
+
+                if (especializacion.length() > 21) {
+                    System.out.println("Maximo de 20");
+                    esValido = false;
+                } else {
+                    esValido = true;
+                }
+
+
+                // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+                if (especializacion.isEmpty()) {
+                    System.out.println("Valor no valido,Introduzca de nuevo la especialización");
+                    esValido = false;
+                } else {
+                    esValido = true;
+
+                }
+            }
+
+        esValido = false;
+
+
+
+                while (!esValido) {
 
         System.out.println("Tiene servicio de peluqueria:(conteste si/no)");
-        String pelu = scanner.nextLine();
+         pelu = scanner.nextLine();
         System.out.println();
+
+
+                    if (pelu.length() > 3) {
+                        System.out.println("Maximo de 2");
+                        esValido = false;
+                    } else {
+                        esValido = true;
+                    }
+
+                    // Control de errores que si esta vacio el campo,nos pida volver a introducirlo hasta que este completo//
+
+                    if (pelu.isEmpty() || pelu != "si" || pelu != "no") {
+                        System.out.println("Valor no valido,Introduzca de nuevo el Servicio de peluqueria");
+                        esValido = false;
+                    } else {
+                        esValido = true;
+
+                    }
+
+                }
+
+        esValido = false;
+
+
+
+
 
         // como peluqueria se trata como un volean creo la variable la inicio en
         // false si el usuario a contestado si la camvio a true
