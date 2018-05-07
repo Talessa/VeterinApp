@@ -97,6 +97,7 @@ public class PantallaRegistrarVeterinario {
         while (!esValido) {
 
 
+
             System.out.println("Introduzca el numero de telefono:");
             String tel = scanner.nextLine();
 

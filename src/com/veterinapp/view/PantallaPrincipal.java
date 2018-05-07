@@ -26,6 +26,7 @@ public class PantallaPrincipal {
             System.out.println("5-Contacto");
             System.out.println("6-Salir.");
 
+
             // guardo en una variable la opcion seleccionada por el usuario
             String opcion = scanner.nextLine();
 

@@ -36,6 +36,7 @@ public class PantallaRegitrarTienda {
 
         while (!esValido) {
 
+
         System.out.println("Introduzca su web:");
          web = scanner.nextLine();
 
