@@ -21,7 +21,8 @@ public class PantallaPrincipal {
             System.out.println("2-Buscar veterinario/tienda.");
             System.out.println("3-Puntuar");
             System.out.println("4-Administrar");
-            System.out.println("5-Salir.");
+            System.out.println("5-Contacto");
+            System.out.println("6-Salir.");
 
             // guardo en una variable la opcion seleccionada por el usuario
             String opcion = scanner.nextLine();
@@ -40,7 +41,10 @@ public class PantallaPrincipal {
             } else if (opcion.equals("4")) {
                 //si la opcion es buscar creare una pantallaadministrar y la iniciare
                 new PantallaAdministrar().iniciar();
-            }else if (opcion.equals("5")){
+            } else if (opcion.equals("5")) {
+                //si la opcion es buscar creare una pantallacontacto y la iniciare
+                new PantallaContacto().iniciar();
+            }else if (opcion.equals("6")){
                 System.out.println("Gracias por usar VeteriApp");
                 System.exit(0);
             }else{

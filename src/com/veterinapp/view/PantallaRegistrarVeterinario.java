@@ -18,7 +18,7 @@ public class PantallaRegistrarVeterinario {
 
         String nombre="";
         String direccion="";
-        int telefono = 0;
+        int telefono=0;
         String horario="";
         String web="";
         String especializacion="";
@@ -98,13 +98,17 @@ public class PantallaRegistrarVeterinario {
 
 
             System.out.println("Introduzca el numero de telefono:");
-            telefono = scanner.nextInt();
-            scanner.nextLine();
+            String tel = scanner.nextLine();
 
 
-            telefono = Integer.parseInt("telefono");
-            System.out.println("Introduzca un valor correcto");
+            try {
 
+                telefono = Integer.parseInt(tel);
+                esValido = true;
+            } catch (Exception e) {
+                System.out.println("Introduzca un valor correcto");
+
+            }
         }
             esValido=false;
 
@@ -196,10 +200,18 @@ public class PantallaRegistrarVeterinario {
                 while (!esValido) {
 
                     System.out.println("Introduzca el precios de visita estandar:");
-                    visita_N = scanner.nextDouble();
-                    scanner.nextLine();
+                    String visi_N = scanner.nextLine();
 
-                    visita_N = Double.parseDouble("visita_N");
+
+                    try {
+
+                        visita_N = Double.parseDouble(visi_N);
+                        esValido = true;
+                    } catch (Exception e) {
+                        System.out.println("Introduzca un valor correcto");
+
+                    }
+                }
 
                 }
                 esValido = false;
@@ -207,24 +219,35 @@ public class PantallaRegistrarVeterinario {
                 while (!esValido) {
 
                     System.out.println("Introduzca el precio de la visita de urgencias:");
-                    visita_U = scanner.nextDouble();
-                    scanner.nextLine();
+                   String visi_U = scanner.nextLine();
 
+                    try {
 
-                    visita_U = Double.parseDouble("Visita_U");
-                    System.out.println("Introduzca un valor correcto");
+                        visita_U = Double.parseDouble(visi_U);
+                        esValido = true;
+                    } catch (Exception e) {
+                        System.out.println("Introduzca un valor correcto");
+
+                    }
                 }
+
+
 
                 esValido = false;
 
                 while (!esValido) {
 
                     System.out.println("Introduzca precio vacunacion:");
-                    vacuna = scanner.nextDouble();
-                    scanner.nextLine();
+                    String vacu = scanner.nextLine();
 
-                    vacuna = Double.parseDouble("Vacuna");
-                    System.out.println("Introduzca un valor correcto");
+                    try {
+
+                        vacuna = Double.parseDouble(vacu);
+                        esValido = true;
+                    } catch (Exception e) {
+                        System.out.println("Introduzca un valor correcto");
+
+                    }
                 }
 
                 esValido = false;
@@ -233,12 +256,18 @@ public class PantallaRegistrarVeterinario {
                 while (!esValido) {
 
                     System.out.println("Introduzca el precio de implantacion microchip:");
-                    chipado = scanner.nextDouble();
+                String chip = scanner.nextLine();
                     scanner.nextLine();
 
 
-                    chipado = Double.parseDouble("Chipado");
-                    System.out.println("Introduzca un valor correcto");
+                    try {
+
+                        chipado = Double.parseDouble(chip);
+                        esValido = true;
+                    } catch (Exception e) {
+                        System.out.println("Introduzca un valor correcto");
+
+                    }
                 }
 
                 esValido = false;
@@ -266,7 +295,7 @@ public class PantallaRegistrarVeterinario {
 
                 }
 
-            }
+
 
             esValido = false;
 
