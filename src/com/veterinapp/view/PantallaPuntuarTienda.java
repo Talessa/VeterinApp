@@ -51,18 +51,14 @@ public class PantallaPuntuarTienda {
                         int puntuacion = scanner.nextInt();
                         scanner.nextLine();
 
-                        // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
 
-                        if (puntuacion > 5) {
-                            System.out.println("Maximo 5 puntos");
+                        if (puntuacion > 5 || puntuacion < 0) {
+                            System.out.println("La puntuación solo puede ser de 1 a 5");
                             esValido = false;
                         } else {
                             esValido = true;
                         }
 
-                        if (puntuacion <=1 ){
-                            System.out.println("De 1 a 5");
-                        }
                         int punt = puntuacion + tienda.puntuacion;
 
                         Boolean comp  = Database.añadirPuntuacionTienda(punt,tienda.codigo);
