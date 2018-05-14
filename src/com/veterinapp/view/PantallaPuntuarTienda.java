@@ -41,30 +41,48 @@ public class PantallaPuntuarTienda {
 
                 String respuesta = scanner.nextLine();
 
-                if (respuesta.equals("si")){
+                boolean esValido = false;
 
-                    System.out.println("¿Qué puntuación quieres darle?(1 - 5)");
-                    int puntuacion = scanner.nextInt();
-                    scanner.nextLine();
+                while (!esValido) {
 
-                    int punt = puntuacion + tienda.puntuacion;
+                    if (respuesta.equals("si")){
 
-                    Boolean comp  = Database.añadirPuntuacionTienda(punt,tienda.codigo);
+                        System.out.println("¿Qué puntuación quieres darle?(1 - 5)");
+                        int puntuacion = scanner.nextInt();
+                        scanner.nextLine();
 
-                    if (comp) {
+                        // Control de errores que si no cumple este requisito el campo,nos pedira volver a introducirlo//
 
-                        System.out.println("Tu puntuación se registró correctamente.");
+                        if (puntuacion > 5) {
+                            System.out.println("Maximo 5 puntos");
+                            esValido = false;
+                        } else {
+                            esValido = true;
+                        }
+
+                        if (puntuacion <=1 ){
+                            System.out.println("De 1 a 5");
+                        }
+                        int punt = puntuacion + tienda.puntuacion;
+
+                        Boolean comp  = Database.añadirPuntuacionTienda(punt,tienda.codigo);
+
+                        if (comp) {
+
+                            System.out.println("Tu puntuación se registró correctamente.");
 
 
-                    }else {
-                        System.out.println("Su puntuación no se ha podido registrar. Por favor intentelo más tarde.");
+                        }else {
+                            System.out.println("Su puntuación no se ha podido registrar. Por favor intentelo más tarde.");
 
+                        }
                     }
+
                 }
+
             }
 
             salir = true;
-
         }while (!salir);
 
         new PantallaPrincipal().iniciar();
