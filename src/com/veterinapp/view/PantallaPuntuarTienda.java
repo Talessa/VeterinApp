@@ -51,6 +51,7 @@ public class PantallaPuntuarTienda {
                         int puntuacion = scanner.nextInt();
                         scanner.nextLine();
 
+                        //control de errores
 
                         if (puntuacion > 5 || puntuacion < 0) {
                             System.out.println("La puntuación solo puede ser de 1 a 5");
