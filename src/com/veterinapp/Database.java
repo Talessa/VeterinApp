@@ -2,6 +2,7 @@ package com.veterinapp;
 
 
 import com.veterinapp.model.Administrador;
+import com.veterinapp.model.Contacto;
 import com.veterinapp.model.Tienda;
 import com.veterinapp.model.Veterinario;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class Database {
 
     static final String url = "jdbc:sqlite:BBDD/veterinapp.db";
-    static final int DATABASE_VERSION = 10;
+    static final int DATABASE_VERSION = 11;
 
     static Database instance;
     static Connection conn;
@@ -67,6 +68,7 @@ public class Database {
             stmt.execute("DROP TABLE IF EXISTS tiendas");
             stmt.execute("DROP TABLE IF EXISTS veterinarios");
             stmt.execute("DROP TABLE IF EXISTS administradores");
+            stmt.execute("DROP TABLE IF EXISTS contacto");
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
@@ -104,6 +106,14 @@ public class Database {
                     "codigo_A integer primary key autoincrement," +
                     "usuario text," +
                     "contraseña text);");
+            stmt.execute("CREATE TABLE IF NOT EXISTS contacto (" +
+                    "codigo_C integer primary key autoincrement," +
+                    "nombre text," +
+                    "apellido text"+
+                    "direccion text," +
+                    "email text," +
+                    "motivo text,"+
+                    "resuelto boolean);");
 
         }catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -168,6 +178,21 @@ public class Database {
             System.out.println(e.getMessage());
         }
 
+    }
+    public static void insertContacto(String nombre,String apellido,String direccion,String email,String motivo){
+        String sql= "INSERT INTO contacto(nombre,apellido,direccion,email,motivo,resuelto)" +
+                "VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setString(3,direccion);
+            pstmt.setString(4,email);
+            pstmt.setString(5,motivo);
+            pstmt.setBoolean(6,false);
+            pstmt.execute();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public static List<Tienda> selectAllTiendas(){
@@ -259,6 +284,35 @@ public class Database {
         return administradores;
     }
 
+    public static List<Contacto> selectAllContactos(){
+        List<Contacto> contactos = new ArrayList<>();
+
+        String sql="SELECT * FROM contacto";
+
+        try (Statement stmt = conn.createStatement()){
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Contacto contacto = new Contacto(rs.getString("nombre"),
+                        rs.getString("apellido"),
+                        rs.getString("direccion"),
+                        rs.getString("email"),
+                        rs.getString("motivo"),
+                        rs.getBoolean("resuelto"),
+                        rs.getInt("codigo_C"));
+
+                contactos.add(contacto);
+            }
+        }catch (SQLException e){
+
+            System.out.println(e.getMessage());
+        }
+
+        return contactos;
+    }
+
     public static boolean añadirPuntuacionTienda(int puntuacion,int codigo){
         boolean resultado=false;
 
@@ -307,6 +361,20 @@ public class Database {
         String sql ="UPDATE veterinarios set mostrar= ? where codigo_V = ?;";
         try (PreparedStatement pstmt= conn.prepareStatement(sql)){
             pstmt.setBoolean(1,mostrar);
+            pstmt.setInt(2,codigo);
+            pstmt.execute();
+            resultado = true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return resultado;
+    }
+    public static boolean resolverContacto(boolean resuelto,int codigo){
+        boolean resultado=false;
+
+        String sql ="UPDATE contacto set mostrar= ? where codigo_C = ?;";
+        try (PreparedStatement pstmt= conn.prepareStatement(sql)){
+            pstmt.setBoolean(1,resuelto);
             pstmt.setInt(2,codigo);
             pstmt.execute();
             resultado = true;
