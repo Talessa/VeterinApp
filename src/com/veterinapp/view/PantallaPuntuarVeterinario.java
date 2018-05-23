@@ -25,21 +25,21 @@ public class PantallaPuntuarVeterinario {
 
                 String urg = "no";
 
-                if (veterinario.urgencias24 == true){
+                if (veterinario.urgencias24 == true) {
                     urg = "si";
                 }
 
                 System.out.println
-                        ( " | " + String.format("%-10s", veterinario.nombre)
+                        (" | " + String.format("%-10s", veterinario.nombre)
                                 + " | " + String.format("%-10s", veterinario.direccion)
                                 + " | " + String.format("%-10s", veterinario.telefono)
                                 + " | " + String.format("%-10s", veterinario.horario)
                                 + " | " + String.format("%-10s", veterinario.web)
                                 + " | " + String.format("%-10s", veterinario.especializacion)
-                                + " | " + String.format("%-6s", veterinario.visita_N)+"€"
-                                + " | " + String.format("%-6s", veterinario.visita_U)+"€"
-                                + " | " + String.format("%-6s", veterinario.vacuna)+"€"
-                                + " | " + String.format("%-6s", veterinario.chipado)+"€"
+                                + " | " + String.format("%-6s", veterinario.visita_N) + "€"
+                                + " | " + String.format("%-6s", veterinario.visita_U) + "€"
+                                + " | " + String.format("%-6s", veterinario.vacuna) + "€"
+                                + " | " + String.format("%-6s", veterinario.chipado) + "€"
                                 + " | " + String.format("%-3s", urg)
                                 + " | " + String.format("%-4s", veterinario.puntuacion)
                                 + " | ");
@@ -47,26 +47,41 @@ public class PantallaPuntuarVeterinario {
 
                 String respuesta = scanner.nextLine();
 
-                if (respuesta.equals("si")){
+                boolean esValido = false;
 
-                    System.out.println("¿Qué puntuación quieres darle?(1 - 5)");
-                    int puntuacion = scanner.nextInt();
-                    scanner.nextLine();
+                while (!esValido){
 
-                    int punt = puntuacion + veterinario.puntuacion;
+                    if (respuesta.equals("si")) {
 
-                    Boolean comp  = Database.añadirPuntuacionVeterinario(punt,veterinario.codigo);
+                        System.out.println("¿Qué puntuación quieres darle?(1 - 5)");
+                        int puntuacion = scanner.nextInt();
+                        scanner.nextLine();
 
-                    if (comp) {
+                        //Control de errores
 
-                        System.out.println("Tu puntuación se registró correctamente.");
+                        if (puntuacion > 5 || puntuacion < 0) {
+                            System.out.println("La puntuación solo puede ser de 1 a 5");
+                            esValido = false;
+                        } else {
+                            esValido = true;
+                        }
+
+                        int punt = puntuacion + veterinario.puntuacion;
+
+                        Boolean comp = Database.añadirPuntuacionVeterinario(punt, veterinario.codigo);
+
+                        if (comp) {
+
+                            System.out.println("Tu puntuación se registró correctamente.");
 
 
-                    }else {
-                        System.out.println("Su puntuación no se ha podido registrar. Por favor intentelo más tarde.");
+                        } else {
+                            System.out.println("Su puntuación no se ha podido registrar. Por favor intentelo más tarde.");
 
+                        }
                     }
                 }
+
             }
 
             salir = true;
